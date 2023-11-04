@@ -11,14 +11,20 @@
 </head>
 <body>
 <?php  
-       $pdo =    new PDO('mysql:host=localhost;dbname=todo-app','root','') ;
-       $query =  $pdo ->query("SELECT * FROM todos ");
+       require "./0.5_db_connect/dbconnect.php";
+       $query = $pdo->prepare("SELECT * FROM todos");
+       $query->execute();
        $todos = $query->fetchAll();
       
     ?> 
     <div class="container py-4">
     
     <h1>Liste des Taches</h1>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" style="float:right;" id="ajout_etudiant"
+        data-bs-target="#staticBackdrop">
+        ajouter Etudiant
+      </button>
+
     <table class="table table-hover">
   <thead>
     <tr>
@@ -35,8 +41,8 @@
     <th scope="row"><input type="checkbox" <?= $todo['completed'] ?'checked' : '' ?>> </th>
       <td class="<?= $todo['completed'] ?'text-decoration-line-through' :''?>"><?= $todo['title'] ?></td>
       <td><a href="details.php?id=<?=$todo['id']; ?>" class="btn btn-primary"><i class="bi bi-pass-fill"></i></a>
-      <a class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
-      <a class="btn btn-danger"><i class="bi bi-trash3"></i></a></td>
+      <a class="btn btn-warning" href="details.php?id=<?=$todo['id']; ?>"><i class="bi bi-pencil-square"></i></a>
+      <a class="btn btn-danger" href="delete.php?id=<?=$todo['id']; ?>"><i class="bi bi-trash3"></i></a></td>
 
 
    </tr>
@@ -45,5 +51,53 @@
   </tbody>
 </table>
     </div>
+    <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade modal-dialog modal-dialog-centered" id="staticBackdrop" data-bs-backdrop="static"
+    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Ajouter tache</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="GET" action="add.php">
+      
+          
+                <input type="text" class="form-control" id="prenom" name="title" required placeholder="title tache"
+                  aria-label="title">
+              
+                <input type="date" class="form-control" id="date" name="date" required placeholder="choisir date">
+            
+        
+          
+            <label for="description" class="form-label" >Description</label>
+            <input type="text" class="form-control" name="description" id="date" required aria-describedby="emailHelp" >
+
+        
+         
+        
+          <select class="form-select" name="completed" aria-label="Default select example">
+            <option selected>completed or not!</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+     
+          
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary"
+              data-bs-dismiss="modal">Submit</button>
+          </div>
+
+   </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>

@@ -9,10 +9,11 @@
 
 </head>
 <body>
-    <?php      $pdo =    new PDO('mysql:host=localhost;dbname=todo-app','root','') ;
+    <?php      $pdo =    new PDO('mysql:host=localhost;dbname=todos','root','') ;
                $query =  $pdo->query('SELECT * FROM todos where id='.$_GET['id'] );
                 $todos = $query->fetchAll();
-                var_dump($todos);
+                header("./index.php");
+              
     ?>
 
 
