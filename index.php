@@ -41,7 +41,7 @@
     <th scope="row"><input type="checkbox" <?= $todo['completed'] ?'checked' : '' ?>> </th>
       <td class="<?= $todo['completed'] ?'text-decoration-line-through' :''?>"><?= $todo['title'] ?></td>
       <td><a href="details.php?id=<?=$todo['id']; ?>" class="btn btn-primary"><i class="bi bi-pass-fill"></i></a>
-      <a class="btn btn-warning" href="details.php?id=<?=$todo['id']; ?>"><i class="bi bi-pencil-square"></i></a>
+      <a class="btn btn-warning" href="update.php?id=<?=$todo['id']; ?>"><button class="bi bi-pencil-square"></i></a>
       <a class="btn btn-danger" href="delete.php?id=<?=$todo['id']; ?>"><i class="bi bi-trash3"></i></a></td>
 
 
@@ -99,5 +99,6 @@
     </div>
 
   </div>
+ 
 </body>
 </html>
