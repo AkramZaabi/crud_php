@@ -11,8 +11,7 @@
     .container{
             display:flex;
             height : 100vh;
-            justify-content: center;
-          
+            justify-content: center;   
             place-items : center;
 
     }
@@ -20,9 +19,22 @@
 </style>
 </head>
 <body>
-    <?php      $pdo =    new PDO('mysql:host=localhost;dbname=todos','root','') ;
+    <?php     
+              if(!array_key_exists('id',$_GET) or !ctype_digit($_GET['id']) )
+              {
+                header('Location : index.php') ; 
+                exit();
+              }
+
+              $pdo =    new PDO('mysql:host=localhost;dbname=todos','root','') ;
                $query =  $pdo->query('SELECT * FROM todos where id='.$_GET['id'] );
                 $todo = $query->fetch();
+
+                if(!$todo)
+                {
+                  header('Location : index.php') ; 
+                exit();
+                }
              
               
     ?>
