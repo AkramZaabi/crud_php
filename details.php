@@ -26,7 +26,7 @@
                 exit();
               }
 
-              $pdo =    new PDO('mysql:host=localhost;dbname=todos','root','') ;
+              $pdo =new PDO('mysql:host=localhost;dbname=todo-app','root','') ;
                $query =  $pdo->query('SELECT * FROM todos where id='.$_GET['id'] );
                 $todo = $query->fetch();
 

@@ -13,8 +13,8 @@
 <form method="POST" action="<?=$_SERVER['PHP_SELF']?>" class="container mt-5">
       
 <div class="mb-3 ">
-    <input type="hidden" value="<?= $todos['id']?>" name="id">
-      <input type="text" value="<?php if(isset($todos['id'])){$todos['id'];}?>"class="form-control" id="prenom" name="title" required placeholder="title tache" aria-label="title">
+    <input type="hidden" name ="id" value="<?=$todo['id']?>">
+      <input type="text" value="<?php if(isset($todo['id'])){$todo['id'];}?>"class="form-control" id="prenom" name="title" required placeholder="title tache" aria-label="title">
         </div>
         <div class="mb-3">
       <input type="date" class="form-control" id="date" name="date" required placeholder="choisir date">
@@ -22,7 +22,7 @@
 
       <div class="mb-3">
   <label for="description" class="form-label" >Description</label>
-  <input type="text" class="form-control" name="description" id="date" required aria-describedby="emailHelp" >
+  <input type="text" class="form-control" name="description" id="date" required value="<?=$todo['description']?>" >
   </div>
 
 
