@@ -6,7 +6,7 @@ $query = $pdo->prepare("SELECT * FROM todos WHERE id = :id");
 $query->bindParam(':id', $_GET['id']);
 $query->execute();
 $todos = $query->fetchAll();
-$template = 'edit_todo';
+$template = 'update';
 $page_title = 'Edit todo page';
-include './update.phtml';
+include './layout.phtml';
 ?>

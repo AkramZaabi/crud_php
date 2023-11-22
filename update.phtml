@@ -9,10 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="container">Add todo </h1>
-<form method="POST" action="add.php" class="container mt-5">
+    <h1 class="container">Edit tache </h1>
+<form method="POST" action="<?=$_SERVER['PHP_SELF']?>" class="container mt-5">
       
 <div class="mb-3 ">
+    <input type="hidden" value="<?= $todos['id']?>" name="id">
       <input type="text" value="<?php if(isset($todos['id'])){$todos['id'];}?>"class="form-control" id="prenom" name="title" required placeholder="title tache" aria-label="title">
         </div>
         <div class="mb-3">

@@ -19,5 +19,6 @@
          
          $template='add_todo' ;
          $page_title  =  'Add todo page  ';
+         include './layout.phtml';
           header("location:index.php?msg=1");
 ?>   
